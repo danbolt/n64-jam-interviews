@@ -15,3 +15,21 @@ h1, h2, h3, h4, h5, h6 { font-weight: normal; }
 .interview-question {
 	font-style: italic;
 }
+
+/* avatar circle crop stolen verbatim from: https://medium.com/@biancapower/how-to-make-a-rectangle-image-a-circle-in-css-2f392bc9abd3 */
+.avatar-cropper {
+	width: 100px;
+	height: 100px;
+	position: relative;
+	overflow: hidden;
+	border-radius: 50%;
+	float: left;
+	margin: 16px;
+}
+.avatar-pic {
+	display: inline;
+	margin: 0 auto;
+	margin-left: -25%;
+	height: 100%;
+	width: auto;
+}
