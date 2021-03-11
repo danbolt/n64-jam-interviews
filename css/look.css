@@ -21,6 +21,10 @@ h1, h2, h3, h4, h5, h6 { font-weight: normal; }
 	font-style: italic;
 }
 
+blockquote video {
+	float: right;
+}
+
 /* avatar circle crop stolen verbatim from: https://medium.com/@biancapower/how-to-make-a-rectangle-image-a-circle-in-css-2f392bc9abd3 */
 .avatar-cropper {
 	width: 100px;
