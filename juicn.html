@@ -12,38 +12,65 @@
     <h1>JUIC'N 64</h1>
     <h2>About the developer and the game</h2>
     <div>
-        <div class="avatar-cropper"><img class="avatar-pic" src="media/avatars/danielface.gif"></div>
         <p>
-            JUIC'N 64 is danielface's submission for the N64Brew Game Jam. The gameplay follows the story of Wren Buster, a young Lunar Spotter hired to rid the moon's tech parks of Lunarbeasts. The game alternates between action and dialogue segments. In the former, the player is tasked with aiming a satelite laser to destroy a rampaging Lunarbeast's weak spots. In the latter, Wren comes to terms with their newfound dissilusionment in work.
+            JUIC'N 64 is kivan117's exuberant entry for the jam.
         </p>
     </div>
 
-    <h2>Chatting with danielface</h2>
+    <h2>Chatting with kivan117</h2>
 
     <p class="interview-question">What got you into Nintendo 64 homebrew?</p>
     <blockquote>
-        asdasd asda sdad 
+        <p>
+            I'm definitely not a professional programmer by trade, but making little video games in my free time has been a hobby of mine for a long time. I seem to return to it every few years. I had a phase where I got really into the early pseudo-3D games, the Doom and Build engine ones, and after I finished making my first raycaster I wanted to try making an actual 3D game. The simplicity of the raycast engine was really fun and felt a bit like transporting myself back in time to the PCs of a bygone era. Based on that experience I decided the best way to learn real 3D would be to focus on the first wave of 3D game consoles. I had some great memories of playing the Nintendo 64 back when it was new, so that was the one I picked.
+        </p>
     </blockquote>
 
     <p class="interview-question">How did you come up with the concept for your game? Was there anything about the jam's theme that stood out to you?</p>
-    <blockquote>answer</blockquote>
+    <blockquote>
+        <p>
+            I've done a few jams in the past, and one of the things I'd taken from past experiences was don't get too hung up on the theme. I like the open ended themes like "Size" in the N64 jam, because they leave a lot of room for good designers to really play with the idea. Unfortunately, they also make it kind of tough sometimes to find that spark of inspiration. If you just puzzle over that nonstop, you lose valuable time. So before the theme was even announced I tried to decide on some basics. I didn't have enough experience with 3D yet for it to be a viable option, so I knew I'd be sticking with 2D. I also knew that no matter how long a jam is officially, they have this almost magical property that causes most of that time to vanish with surprisingly little progress. So in the interest of completing something and turning it in, I decided to do a single screen arcade game.
+        </p>
+        <p>
+            Once the theme was announced I only gave myself a couple days to mull it over and come up with a concept. I wanted to do something that wasn't as direct as "big and little" but that's pretty tough. The question I literally asked myself out loud was "who cares about size" and that was probably the big "aha!" moment. The picture of some insecure beefy macho man was too good to not go with it. I went through a few iterations of exactly how to make it work. Originally the juice mechanic was more directly tied to the size theme. "Juic'n" is a pretty obvious slang reference to performance enhancers and those are known to make you both bigger and... littler. In the end I decided not to go that route. I wanted the game to be appropriate for all ages, not some kind of "Conker's Bad Leg Day" and decided to focus just on the "always get bigger" element. This was a pretty late pivot though and I didn't have time to redo all of my assets for a whole new take on the theme.
+        </p>
+        <p>
+            So iteration 2 of the idea was supposed to be all about body positivity and just striving to get bigger as a personal goal. The real world had really become pretty chaotic and I thought the positive messaging was important. I briefly played with the idea of an encouraging message at the end of every run but didn't want it to get too repetitive or annoying. The concept of actively avoiding a fight came into play around this time. I wanted it to keep that arcade game vibe and draw some parallels between arcade game top scores and the gym rats with their new personal bests. I wanted to include a sort of tracker and chart your scores from run to run, but always building on the last one. Emphasize that it's about the commitment. Maybe you have a bad day but you keep at it and that's what counts. None of that meta commentary really made the final cut, which is a shame.
+        </p>
+    </blockquote>
 
     <p class="interview-question">What tools did you end up using to create your game?</p>
-    <blockquote>answer</blockquote>
+    <blockquote>
+        <p>
+            On the programming side of things, I used Visual Studio Code in a CMake based setup on Windows 10. One of the community members had made a pretty easy to use CMake gcc cross compiler that you could use on Windows, so I thought I'd try that route out. The game uses the libdragon library which was all new to me but pretty simple compared to libultra. I think if I was doing it over again I'd go with a dockerized libdragon setup though. It's just a little easier to get going.
+        </p>
+        <p>
+            The music consists of tracker files played using the N64 port of libmikmod. Thankfully others had already made those tracker files, so I just needed OpenMPT to clean up any weird parts, cut them down for size and time, and then export them in a format that was easier for mikmod to play on console. The sound effects were simple wav files made with rFXGen, an sfxr derivative. Sound effects are also played with mikmod.
+        </p>
+        <p>
+            For art I just used MS paint and a lot of squinting mostly. I did use Gimp any time I needed something fancy, like the start menu logo or the game over text.
+        </p>
+        <p>
+            Testing a libdragon game is kind of a pain compared to libultra since most emulators don't support it. I primarily tested on an NTSC console with an EverDrive X7. I used UNFLoader, a tool made by another community member (and one of the jam judges in fact), to push each new iteration of the rom to the flash cartridge over USB. I have a little USB capture card hooked up to the N64 console so I can view the output on the same PC I'm using to build the rom. I tend to recompile and test almost obsessively with each new change so that quick turn around time really helped. I know some people simply don't have a console, so I also tested with the MAME and CEN64 emulators to verify it ran there was well. I even bought a PAL console to make sure it worked on those, but of course it arrived like 2 days after the jam ended.
+        </p>
+    </blockquote>
 
     <p class="interview-question">Is there anything you particularily enjoy about your game, or is there something you worked on that you're particularily proud of?</p>
-    <blockquote>answer</blockquote>
+    <blockquote>
+        <p>
+            Right before the jam started, I'd recently talked to a friend of mine about dynamic difficulty in games. It's really tough to scale difficulty without feeling like you're focusing too much on a specific audience, casual or pro or whatever. So I wanted to incorporate some type of risk/reward mechanic that allowed a player to make the game tougher if they wanted and feel rewarded for doing so. In Juic'n 64, the more juice you have in your system, the higher your score per weight lifted, but equally the "angrier" you become if you get bumped. More skilled players can juice up and go for broke, riding the line just one hit away from a game over. Cautious players can opt not to, and that gives you a lot more leniency if you bump into fellow gym goers. Like any jam game there was a lot left on the cutting room floor, but the core juice mechanic is something I'm really happy with.
+        </p>
+    </blockquote>
 
     <h2>Screenshots</h2>
-    <img width="320px" src="media/lunar/my_photo-13.jpg">
-    <img width="320px" src="media/lunar/my_photo-18.jpg">
-    <img width="320px" src="media/lunar/my_photo-23.jpg">
-    <img width="320px" src="media/lunar/my_photo-15.jpg">
+    <img width="320px" src="media/juicn/my_photo-12.jpg">
+    <img width="320px" src="media/juicn/my_photo-14.jpg">
+    <img width="320px" src="media/juicn/my_photo-15.jpg">
+    <img width="320px" src="media/juicn/my_photo-17.jpg">
     <h2>Some Nice Links</h2>
     <ul>
-        <li><a href="https://danbolt.itch.io/">danielface's website on itch.io</a></li>
-        <li><a href="https://github.com/danbolt/n64-jam-1">The source code for JUIC'N 64</a></li>
-        <li><a href="https://www.youtube.com/watch?v=hKp7P0ejpXU">Gameplay recording on YouTube</a></li>
+        <li><a href="https://github.com/kivan117/juicin64">The source code for JUIC'N 64</a></li>
+        <li><a href="https://www.youtube.com/watch?v=26CVs6R-WFY">Gameplay recording on YouTube</a></li>
     </ul>
     <a href="index.html">Back to the main page</a>
   </body>
