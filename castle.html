@@ -6,7 +6,7 @@
 
     <link rel="stylesheet" type="text/css" href="css/look.css">
 
-    <title>Castle64</title>
+    <title>Castle 64</title>
   </head>
   <body>
     <h1>Castle64</h1>
@@ -14,7 +14,7 @@
     <div>
         <div class="avatar-cropper"><img class="avatar-pic" src="media/avatars/danielface.gif"></div>
         <p>
-            Castle64 is manfried's submission for the N64Brew Game Jam. 
+            Castle 64 is manfried's submission for the N64Brew Game Jam. Castle 64 invites the player to play as Tericius, a knight exploring his home castle. The entry stands out with its use of large sprites and high-resolution video output. The game makes good use of the Expansion Pak to showcase impressive visuals.
         </p>
     </div>
 
@@ -57,22 +57,41 @@
 
     <p class="interview-question">As far as Nintendo 64 games go, your use of larger 2D sprites and a high-resolution framebuffer is really unique. I remember seeing videos of your platformer stuff and being enamored with the style. How did you end up with such an interesting look?</p>
     <blockquote>
+        <video width="320" height="240" controls>
+            <source src="media/castle/test_platformer.mp4" type="video/mp4">
+            Your browser does not support the video tag. You can download the media file locally <a href="media/castle/test_platformer.mp4">here</a>.
+        </video> 
+
         <p>
-            todo
+            Well I can't take credit for the look as I get these sprites from an artist who sold for a cheap price. He also offer somes for free from time to time and those from the platformer videos you saw where free ones. I did buy a few of them times ago when it was the sales season so I could have various sprites for when I have small projects. It's nice to have cute arts available when prototyping something or making a quick game for my kids.
         </p>
     </blockquote>
 
     <p class="interview-question">Did you ever have performance issues while making Castle64? If so, what sort of ways did you optimize the game?</p>
     <blockquote>
         <p>
-            todo
+            Indeed, it's hard to keep a strong FPS when dealing with high-rez for the N64. There's a reason why back in the days, 640x480 was only used in menus and not in gameplay.
+        </p>
+        <p>
+            First thing I had to do was to disable z-buffering. It could have make sense to rely on it to draw the sprites, but its cost on resources was too heavy. So I had to write a sort function on my maps after loading them to make sure that I draw elements in the appropriate order. Each tile is part of a double-chained list so I had to build a sorting algorithm. 
+        </p>
+        <img src="media/castle/castle_torch.png">
+        <img src="media/castle/dungeon_torch.png">
+        <p>
+            I also had to make sure I did not try to draw too many sprites - even outside of screen - as each call to the drawing functions lowered the frame rate no mater if it was actually on screen or not. So for objects that I draw I decided that instead of having both a sprite for ground tile and the object it was better to have a them in a unique sprite. I did not do that for all of them though, but I could have to improve performance further. For example, for the torchs I had two times the very same animation texture but with a different background for the wall texture (see attached). Same for candelier and flags. I did so because I knew I did not have to load both of them as it was for a different map theme, so the transparent animation or the one with grounds took the same amount of RAM.
+        </p>
+        <p>
+            The use of Expansion Pak was mandatory for high-rez as the frame buffer already took 1.17MB of the standard 4MB. I tried to fit it all without the Pak but it would have required to load textures from ROM to RAM too often which would have lowered the frame rate even more. Most of the time I managef to keep it at 30 FPS with drops to 20 FPS when too many objects are on screen which is pretty close or even better than a lot of games from back in the days :)
         </p>
     </blockquote>
 
     <p class="interview-question">If someone wanted to get into homebrew today, would you have any advice or suggestions for them?</p>
     <blockquote>
         <p>
-            todo
+            My first one would be that they should not hesitate to give it a try, as long as they have a minimum programming background. But don't get into it with any expectation apart from having fun by learning stuff. I think the worst thing for motivation is to have a specific idea of game to create as most likely by getting into homebrew any pre-existing idea will crash into the reality wall of hardware capabilites.
+        </p>
+        <p>
+            Regarding N64 in particular, I would say that to start, a basic knowledge on C about pointers and structs is required. Then they should read Buu's tutorial to get familiar with the official SDK. I think the amount of ressources available to start with N64 is great now. They are plenty of codes to use as examples and great people to ask questions to, so getting into seems like it was never more accessible than today.
         </p>
     </blockquote>
 
