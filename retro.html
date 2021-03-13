@@ -12,38 +12,52 @@
     <h1>Retro Dash</h1>
     <h2>About the developer and the game</h2>
     <div>
-        <div class="avatar-cropper"><img class="avatar-pic" src="media/avatars/danielface.gif"></div>
         <p>
-            Retro Dash is danielface's submission for the N64Brew Game Jam. The gameplay follows the story of Wren Buster, a young Lunar Spotter hired to rid the moon's tech parks of Lunarbeasts. The game alternates between action and dialogue segments. In the former, the player is tasked with aiming a satelite laser to destroy a rampaging Lunarbeast's weak spots. In the latter, Wren comes to terms with their newfound dissilusionment in work.
+            Retro Dash is SpiritOf1776's submission for the N64Brew Game Jam. The game injects the high-energy focus of a contemorary endless runner game onto the Nintendo 64's hardware. Retro Dash is notable for its sense of polish and demanding (but acommodating!) difficulty.
         </p>
     </div>
 
-    <h2>Chatting with danielface</h2>
+    <h2>Chatting with SpiritOf1776</h2>
 
     <p class="interview-question">What got you into Nintendo 64 homebrew?</p>
     <blockquote>
-        asdasd asda sdad 
+        <p>
+            The N64 has always been special to me.  I can still reember the day that my parents took me to Toys R Us to get it.  I have so many memories of all the games I played on it as a kid.  Fastforward 20+ years and life for me is a lot different today than it was back then: wife, kid, job, mortgage, etc.  With everything going on in the world I have sort of been on a retro video game binge trying to recapture the "good ol' days".  When I heard about the game jam I thought it would be really fun to actually build a game for a retro video game console instead of just playing on them.  The software I work on at work uses tons of memory and resources to view large, complex CAD models.  I thought it would be fun to get away from the size and complexity of the stuff I deal with daily work on a project that had a much more narrow scope.  In my mind its pretty darn cool what you can create with 4-8mb of ram and 4k of texture memory!
+        </p>
     </blockquote>
 
     <p class="interview-question">How did you come up with the concept for your game? Was there anything about the jam's theme that stood out to you?</p>
-    <blockquote>answer</blockquote>
+    <blockquote>
+        <p>I have always had a soft spot for endless runner games ever since I played Robot Unicorn Attack on my iPod Touch back around 2010.  At the time of the Game Jam I was playing Geometry Dash when I had some time here and there.  A buddy from work suggested that I could use that as a point fo departure for a n64 game.  Since I knew I wouldnt have enough free time to come up with something very complex due to time restrictions it seeed like a good idea to me.  I figured that a size change mechanic could be integrated pretty straightforwardly into the always running mechanic to add some additional gameplay besides just jumping.</p>
+    </blockquote>
 
     <p class="interview-question">What tools did you end up using to create your game?</p>
-    <blockquote>answer</blockquote>
+    <blockquote>
+        <p>
+            Having no N64 development experience, I chose libdragon since it had a really low barrier to entry.  The NPM package / docker container made it extremely easy to get up and running compiling ROMs and experimenting with the API.  I also used NodeJS to build a small asset pipeline for tilemaps and levels.  I also used the HTML5 TextMetrics API and with Canvas to generate spritefonts for the text in the game.  Building the pipeline in node made it extremely easy to run and build the game on any computer that had Node and docker installed.
+        </p>
+        <p>
+            One problem I had pretty early on was that it was really hard to see what was going on in my game.  Without a USB enabled everdrive I wasnt aware of any way to even do some basic debugging.  Since the game was pretty simple it was not too hard to abstract input, rendering and auido between the N64 and libSDL.  This allowed me to easily debug the platform independant game logic in a desktop debugger.  I was also able to quickly iterate on the levels by being able to "hot reload" them without having to rebuild a ROM.  A side effect of the libSDL layer was that I was also able to use emscripten to generate a WebAssembly version that I could easily upload to itch.io so my friends to could playtest the game and provide feedback without having to install any emulator or set anything up.
+        </p>
+    </blockquote>
 
     <p class="interview-question">Is there anything you particularily enjoy about your game, or is there something you worked on that you're particularily proud of?</p>
-    <blockquote>answer</blockquote>
+    <blockquote>
+        <p>
+            To be honest, the thing I enjoyed most was the feeling I got when I ran an early build of the game on the hardware that had most of the features in there.  I felt like the cycle had come full circle.  From a kid who had no idea what programming was, just pouring hours playing games on the n64, to an adult burning the midnight oil after putting my kid to bed writing code for a game that was going to be played by other people on an actual N64.
+        </p>
+    </blockquote>
 
     <h2>Screenshots</h2>
-    <img width="320px" src="media/lunar/my_photo-13.jpg">
-    <img width="320px" src="media/lunar/my_photo-18.jpg">
-    <img width="320px" src="media/lunar/my_photo-23.jpg">
-    <img width="320px" src="media/lunar/my_photo-15.jpg">
+    <img width="320px" src="media/retro/my_photo-18.jpg">
+    <img width="320px" src="media/retro/my_photo-26.jpg">
+    <img width="320px" src="media/retro/my_photo-23.jpg">
+    <img width="320px" src="media/retro/my_photo-25.jpg">
     <h2>Some Nice Links</h2>
     <ul>
-        <li><a href="https://danbolt.itch.io/">danielface's website on itch.io</a></li>
-        <li><a href="https://github.com/danbolt/n64-jam-1">The source code for Retro Dash</a></li>
-        <li><a href="https://www.youtube.com/watch?v=hKp7P0ejpXU">Gameplay recording on YouTube</a></li>
+        <li><a href="https://matthewcpp.itch.io/retrodash">The web version of Retro Dash on itch.io</a>
+        <li><a href="https://github.com/matthewcpp/RetroDash">The source code for Retro Dash</a></li>
+        <li><a href="https://www.youtube.com/watch?v=TC1EYy3Faf0">Gameplay recording on YouTube</a></li>
     </ul>
     <a href="index.html">Back to the main page</a>
   </body>
