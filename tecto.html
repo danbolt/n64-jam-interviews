@@ -12,9 +12,8 @@
     <h1>Tecto</h1>
     <h2>About the developer and the game</h2>
     <div>
-        <div class="avatar-cropper"><img class="avatar-pic" src="media/avatars/danielface.gif"></div>
         <p>
-            Tecto is danielface's submission for the N64Brew Game Jam. The gameplay follows the story of Wren Buster, a young Lunar Spotter hired to rid the moon's tech parks of Lunarbeasts. The game alternates between action and dialogue segments. In the former, the player is tasked with aiming a satelite laser to destroy a rampaging Lunarbeast's weak spots. In the latter, Wren comes to terms with their newfound dissilusionment in work.
+            Tecto is InTheBeef and Wiseguy's submission for the N64Brew Game Jam. 
         </p>
     </div>
 
@@ -22,29 +21,87 @@
 
     <p class="interview-question">What got you into Nintendo 64 homebrew?</p>
     <blockquote>
-        asdasd asda sdad 
+        <p><strong>Wiseguy:</strong> I got into N64 dev/hacking in general in early 2020 for a Super Mario 64 romhacking competition. During working on my entry for that, I really learned a lot about how N64 programming (especially graphics) works, which I found really interesting. A few months after the competition, InTheBeef, who I had met via that romhacking competition, asked me if I would be interesting in joining the N64Brew game jam on a team with her, which I was. After that, I took the time until the jam started to learn how to set up a toolchain to compile a game for N64.</p>
+
+        <p>
+            <strong>InTheBeef:</strong> 
+        </p>
     </blockquote>
 
     <p class="interview-question">How did you come up with the concept for your game? Was there anything about the jam's theme that stood out to you?</p>
-    <blockquote>answer</blockquote>
+    <blockquote>
+        <p><strong>Wiseguy:</strong> The two of us spent a while brainstorming ideas for the game jam that fit the theme. Eventually we had the idea to make a game where you could interact with objects in the world to shrink/grow them in size, with the original example I pitched being picking up a rock to throw at an enemy, and then while in midair you'd turn it into a boulder to do a lot of damage. This was very loosely inspired by the creative combat you can do in Breath of the Wild, where you can make use of some physics based abilities in combat similarly. We didn't end up having enemies in the game, but the idea of interacting with objects to change their size stuck.</p>
+
+        <p>
+            <strong>InTheBeef:</strong> 
+        </p>
+    </blockquote>
 
     <p class="interview-question">What tools did you end up using to create your game?</p>
-    <blockquote>answer</blockquote>
+    <blockquote>
+        <p><strong>Wiseguy:</strong> The main tool we used was Fast64, which is an incredibly capable blender plugin used for making graphics for Super Mario 64 romhacks. I heavily modified the tool to output data that fit the rendering system I designed for our engine, which ended up being a pretty big pain point as I had to balance my time between working on the rest of the engine and fixing many bugs that I had introduced in those modifications. Besides that, the only tool used for making the game was the toolchain, which was just a build of mips gcc+binutils for Windows, libultra from the SDK, and a python script that calculated the rom checksums. So basically, a Windows version of Crash's modern SDK (though since the jam I have gotten building working on linux via his SDK as well.)</p>
+
+        <p>
+            <strong>InTheBeef:</strong> 
+        </p>
+    </blockquote>
 
     <p class="interview-question">Is there anything you particularily enjoy about your game, or is there something you worked on that you're particularily proud of?</p>
-    <blockquote>answer</blockquote>
+    <blockquote>
+        <p><strong>Wiseguy:</strong> The part of the game that I'm most proud of is the engine, by far. It's got a lot of very advanced features in it (many of which we didn't even have the time to use sadly) in regards to memory and object management as well as collision.</p>
+        <p>The memory system is built on a custom fixed block allocator that can return contiguous blocks when you need a chunk of memory larger than a single block. That allocator is then used by the Entity-Component-System I implemented, which uses archetypes to increase performance by maximizing cache hits via data locality (see <a href="https://ajmmertens.medium.com/building-an-ecs-2-archetypes-and-vectorization-fe21690805f9">here</a>, which is the primary resource I used to design the system for more details). Using that ECS I was able to make objects very flexible, since each object can have any arbitrary set of components attached to it which will dictate its functionality. This makes adding new functionality to the game's systems very easy.</p>
+        <p>The collision system is very noteworthy as well. Part of the modifications I made to Fast64 included an extra step in collision exporting that calculated a BVH (Bounding Volume Hierarchy). This is an acceleration structure that allows collision to be greatly sped up by using very efficient culling with Axis Aligned Bounding Boxes before doing an expensive triangle collision check. From there, collision detection is implemented using a series of raycasts for any objects that interact with collision meshes. Using some matrix math, I'm able to convert the rays into local space for any given collision mesh being checked against, so that I don't need to update those collision meshes each frame to translate their vertices into world space. This also ensures I don't have to make duplicates of every collision mesh for each object that uses them, as all objects that use a given mesh can just point to the same BVH tree.</p>
+
+        <p>
+            <strong>InTheBeef:</strong> 
+        </p>
+    </blockquote>
+
+    <p class="interview-question">How did you feel about writing a game in ECS on the Nintendo 64? That sort of thing wasn't really in vogue at the time of the system's popularity?</p>
+    <blockquote>
+        <p><strong>Wiseguy:</strong> As far as I know, the concept barely existed if at all at that point in game dev, so it was very interesting taking modern design principles and applying them to a console that is older than the principles themselves.</p>
+        <p>Writing an ECS on N64 was definitely difficult, especially since I constrained myself to using C. I considered using C++ for it, but I had heard that there were some issues that I didn't know the specifics of at the time, and I'm more experienced with just straight up C, so I ended up avoiding C++ for this case.</p>
+        <p>The hardest part was handling the memory management aspect of it, as it turns out none of the articles (that I could find at least) about ECS really cover the nitty gritty of how to actually store the component data, which is probably the most difficult part of the implementation of an ECS. Because each archetype has its own arraylist for its components, I ended up splitting each block of memory that a given archetype allocated into equal length (but not equal sized, since components can have different sizes) arrays for each component in the archetype.</p>
+        <p>As an example, if there is an archetype with components A and B, then all A and B instances for entities of that archetype are allocated together in blocks. If another archetype with A, B, and C components exists, then all instances of those A and B are stored in different blocks than the A and B for the first archetype. This means that every system that wants to iterate over all entities with a given base set of components have to iterate through all the archetypes that have at least those components, so I wrote some helper functions to abstract that part away.</p>
+        <p>Calculating how many elements to put in an array for a given block ended up giving me some trouble because of their varying lengths and may have been easier with C++ templates, but in the end I'm happy I went with C because it was a very interesting set of problems to solve. I'm happy that I went with an ECS, because I learned a lot about how they work and how to use them properly, which is very useful knowledge in general, not just for N64 development.</p>
+    </blockquote>
+
+    <p class="interview-question">Think you'd look to reusing your ECS logic for another project on the Nintendo 64?</p>
+    <blockquote>
+        <p><strong>Wiseguy:</strong> I absolutely plan on reusing the ECS on another project when the time comes. There's a bug in relation to deleting objects (which I worked around by just resetting the entire system when leaving the level and going to credits), but other than that it works incredibly well. There's room to improve it in both usability and performance, for example tweaking the size of memory blocks to minimize wasted RAM while still maintaining good allocation performance, so it'll definitely get some upgrades next time I use it.</p>
+    </blockquote>
+
+    <p class="interview-question">next question for InTheBeef</p>
+    <blockquote>
+        <p>
+            <strong>InTheBeef:</strong> 
+        </p>
+    </blockquote>
+
+    <p class="interview-question">If someone wanted to get into homebrew today, would you have any advice or suggestions for them?</p>
+    <blockquote>
+        <p>
+            <strong>InTheBeef:</strong> 
+        </p>
+        <p>
+            <strong>Wiseguy:</strong> Since so much of N64 development is knowing how the graphics pipeline works, it might be worth looking into setting up some sort of sandbox environment to play around with things like the color combiner, texture loads, etc. to get a feel for them. Knowing how to render graphics is pretty critical (can't really have much of a game without any rendering of some kind), so I think it should be a pretty high priority detail to learn. Luckily, there are a lot of resources on how N64 graphics works not just in the homebrew community but in romhacking communities as well, since they all share the same graphics hardware at the end of the day. My only word of caution if learning via romhacking resources is to make sure you understand which parts are game-specific, such as rigging for skeletal animation, and which parts are not, such as displaylists and vertex arrays. 
+        </p>
+    </blockquote>
 
     <h2>Screenshots</h2>
-    <img width="320px" src="media/lunar/my_photo-13.jpg">
-    <img width="320px" src="media/lunar/my_photo-18.jpg">
-    <img width="320px" src="media/lunar/my_photo-23.jpg">
-    <img width="320px" src="media/lunar/my_photo-15.jpg">
+    <img width="320px" src="media/tecto/vlcsnap-2021-03-19-16h52m39s471.png">
+    <img width="320px" src="media/tecto/vlcsnap-2021-03-19-16h53m17s481.png">
+    <img width="320px" src="media/tecto/vlcsnap-2021-03-19-16h54m47s045.png">
+    <img width="320px" src="media/tecto/vlcsnap-2021-03-19-16h55m25s060.png">
     <h2>Some Nice Links</h2>
     <ul>
-        <li><a href="https://danbolt.itch.io/">danielface's website on itch.io</a></li>
-        <li><a href="https://github.com/danbolt/n64-jam-1">The source code for Tecto</a></li>
-        <li><a href="https://www.youtube.com/watch?v=hKp7P0ejpXU">Gameplay recording on YouTube</a></li>
+        <li><a href="https://github.com/TheShaders/Tecto">The source code for Tecto</a></li>
+        <li><a href="https://www.youtube.com/watch?v=f6JBRPTfC1g">Gameplay recording on YouTube</a></li>
     </ul>
     <a href="index.html">Back to the main page</a>
+    <hr>
+    <p>Website by Daniel Savage<br />
+    Interviews are CC BY-SA 4.0; Screenshots are likely fair use.<br />
+    <a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/"><img alt="licensed under reative Commons Attribution-ShareAlike 4.0 International" style="border-width:0" src="https://i.creativecommons.org/l/by-sa/4.0/88x31.png" /></a></p>
   </body>
 </html>
