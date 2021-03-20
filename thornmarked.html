@@ -16,13 +16,13 @@
             Thornmarked is Vanadium and wallmasterr's submission for the N64Brew Game Jam. The submission is simple gameplay-wise, but represents an incredible amount of technical work over a two-month period. Some impressive notes are a PAL-friendly framebuffer, skeletal animation, and streaming audio playback.</p>
     </div>
 
-    <h2>Chatting with Vanadium</h2>
+    <h2>Chatting with wallmasterr and Vanadium</h2>
 
     <p class="interview-question">What got you into Nintendo 64 homebrew?</p>
     <blockquote>
         <p><strong>Vanadium:</strong> I like making things difficult for myself, and I saw an announcement for the jam. What sealed the deal was how few homebrew N64 games there were out there—it was like unexplored territory. Before the jam, I had never even thought about it. I never even had an N64.</p>
 
-        <p><strong>wallmasterr:</strong> I released <a href="https://lowtekgames.itch.io/fleanes">a new NES game</a> on kickstarter called "Flea!" and was running a follow up kickstarter for the sequel "Tapeworm Disco puzzle" and came across the N64 jam while looking for places to promote the kickstarter. I like working on low poly with super optimised textures and N64 is all about that. I remember dumping models from n64 games and analyzing how they were built up when I was in high school. I learned a lot from picking models apart. Unfortunately I entered the jam a little late so didn't manage to make much. I've done a lot of game jams, but not specifically targeting the Nintendo 64.</p>
+        <p><strong>wallmasterr:</strong> I released <a href="https://lowtekgames.itch.io/fleanes">a new NES game</a> on kickstarter called "Flea!" and was running a follow up kickstarter for the sequel "Tapeworm Disco puzzle" and came across the N64 jam while looking for places to promote the kickstarter. I like working on low poly with super optimised textures and N64 is all about that. I remember dumping models from N64 games and analyzing how they were built up when I was in high school. I learned a lot from picking models apart. Unfortunately I entered the jam a little late so didn't manage to make much. I've done a lot of game jams, but not specifically targeting the Nintendo 64.</p>
     </blockquote>
 
     <p class="interview-question">How did you come up with the concept for your game? Was there anything about the jam's theme that stood out to you?</p>
@@ -34,9 +34,9 @@
 
     <p class="interview-question">What tools did you end up using to create your game?</p>
     <blockquote>
-        <p><strong>Vanadium:</strong> VS Code, Logic Pro, and an Everdrive 64 X7. Plus a bunch of custom tools I wrote.</p>
+        <p><strong>Vanadium:</strong> VS Code, Logic Pro, and an Everdrive 64 X7. Plus a bunch of <a href="https://github.com/N64brew-Game-Jam-2020/Thornmarked/tree/trunk/tools">custom tools I wrote</a>.</p>
 
-        <p><strong>wallmasterr:</strong> I used Blender, exported to FBX which font converted to baked vertex animation by Vanadiums tool. This was great as I had used interpolated FBX importers for some inhouse game engines before and there was always a load of teething problems with scaling, but by baking the vertex data it all worked basically the first time. I used Photoshop for the textures. Vanadium did all the heavy lifting on the code side to get it all working.</p>
+        <p><strong>wallmasterr:</strong> I used Blender, exported to FBX which font converted to baked vertex animation by <a href="https://github.com/N64brew-Game-Jam-2020/Thornmarked/tree/trunk/tools/modelconvert">Vanadium's tool</a>. This was great as I had used interpolated FBX importers for some inhouse game engines before and there was always a load of teething problems with scaling, but by baking the vertex data it all worked basically the first time. I used Photoshop for the textures. Vanadium did all the heavy lifting on the code side to get it all working.</p>
     </blockquote>
 
     <p class="interview-question">Is there anything you particularily enjoy about your game, or is there something you worked on that you're particularily proud of?</p>
@@ -46,7 +46,17 @@
         <p><strong>wallmasterr:</strong> I really like how nice and squishy the animations turned out. I used a bone that scaled to make the characters eyes blink which shocked Vanadium at first I think again as I say it worked out the box.</p>
     </blockquote>
 
-    <p class="interview-question">The project was engaging to watch unfold in that Vanadium took the time to <a href="https://www.moria.us/tags/nintendo-64">blog your progress</a> every step of the way. I finally understood how region codes work from the posts. What made you decide to do that?</p>
+    <p class="interview-question">The fantasy characters are incredibly cute and they feel fresh compared to other Nintendo 64 games. What inspired you for their designs?</p>
+    <blockquote>
+        <p><strong>wallmasterr:</strong> Vanadium had a pretty clear idea of what he wanted the character to look like. I had just finished a game at the company I worked for with a similar style to <a href="https://www.youtube.com/watch?v=vbTrWpQ7-h4">Red Reign</a> so I had to be sure I made the style different enough. I think tools like Blender have moved on a lot since the N64 days so it's much easier to create compelling characters quickly than it was back in the day.</p>
+    </blockquote>
+
+    <p class="interview-question">If you had started modelling at the beginning of the jam, is there something more you would have looked to add?</p>
+    <blockquote>
+        <p><strong>wallmasterr:</strong> I would have liked to create better enemies and get some  kind of environments in. If I was in the team from the beginning I would have liked to do some more brainstorming of the game design too. As I joined so late I didn't want to reinvent the wheel, just help Vanadium in his vision.</p>
+    </blockquote>
+
+    <p class="interview-question">The project was engaging to watch unfold in that Vanadium took the time to <a href="https://www.moria.us/tags/nintendo-64">blog the game's progress</a> every step of the way. I finally understood how region codes work from the posts. What made you decide to do that?</p>
     <blockquote>
         <p><strong>Vanadium:</strong> At first, I wanted to write more. I write a lot better when I know there’s an audience. I kept going because some people made positive comments about the blog. The blog also helped during development because any time I forgot what I did, I could just skim through the blog to find it.</p>
     </blockquote>
@@ -65,7 +75,7 @@
     <blockquote>
         <p><strong>Vanadium:</strong> You should come in with a high pain tolerance and some experience writing games in C. Get a flashcart with USB.</p>
 
-        <p><strong>wallmasterr:</strong> (coming soon)</p>
+        <p><strong>wallmasterr:</strong> I would recommend looking into NESmaker and GB studio for non coders. Those tools also have large friendly communities who can help through any issues and like to share game kickstarters on socals and stuff. Or just look on some forums/Discord channels and ask if anyone is looking for the skill set you have. My low poly and industry experience made it easy to transition to N64 limitations. There are a lot of helpful people out there if you ask nicely.</p>
     </blockquote>
 
 
