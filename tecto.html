@@ -24,7 +24,7 @@
         <p><strong>Wiseguy:</strong> I got into N64 dev/hacking in general in early 2020 for a Super Mario 64 romhacking competition. During working on my entry for that, I really learned a lot about how N64 programming (especially graphics) works, which I found really interesting. A few months after the competition, InTheBeef, who I had met via that romhacking competition, asked me if I would be interesting in joining the N64Brew game jam on a team with her, which I was. After that, I took the time until the jam started to learn how to set up a toolchain to compile a game for N64.</p>
 
         <p>
-            <strong>InTheBeef:</strong> 
+            <strong>InTheBeef:</strong>  IIRC I discovered it on a whim, I had already gotten involved in the Simpleflips (sm64) romhacking community and original games have always interested me.
         </p>
     </blockquote>
 
@@ -33,7 +33,7 @@
         <p><strong>Wiseguy:</strong> The two of us spent a while brainstorming ideas for the game jam that fit the theme. Eventually we had the idea to make a game where you could interact with objects in the world to shrink/grow them in size, with the original example I pitched being picking up a rock to throw at an enemy, and then while in midair you'd turn it into a boulder to do a lot of damage. This was very loosely inspired by the creative combat you can do in Breath of the Wild, where you can make use of some physics based abilities in combat similarly. We didn't end up having enemies in the game, but the idea of interacting with objects to change their size stuck.</p>
 
         <p>
-            <strong>InTheBeef:</strong> 
+            <strong>InTheBeef:</strong> We took the size theme quite literally & jumped on the resizable objects wagon pretty quickly. We had conceptualized puzzles from the start but gradually lent towards platforming and some simple mechanics we could implement quickly (due to running out of time).
         </p>
     </blockquote>
 
@@ -42,7 +42,7 @@
         <p><strong>Wiseguy:</strong> The main tool we used was Fast64, which is an incredibly capable blender plugin used for making graphics for Super Mario 64 romhacks. I heavily modified the tool to output data that fit the rendering system I designed for our engine, which ended up being a pretty big pain point as I had to balance my time between working on the rest of the engine and fixing many bugs that I had introduced in those modifications. Besides that, the only tool used for making the game was the toolchain, which was just a build of mips gcc+binutils for Windows, libultra from the SDK, and a python script that calculated the rom checksums. So basically, a Windows version of Crash's modern SDK (though since the jam I have gotten building working on linux via his SDK as well.)</p>
 
         <p>
-            <strong>InTheBeef:</strong> 
+            <strong>InTheBeef:</strong> I almost exclusively used Blender (coupled with a custom modification of Fast64 for exporting), for texture generation or modelling, GitHub Desktop for file distribution & possibly textures.com for some last second relatively free assets. 
         </p>
     </blockquote>
 
@@ -53,7 +53,13 @@
         <p>The collision system is very noteworthy as well. Part of the modifications I made to Fast64 included an extra step in collision exporting that calculated a BVH (Bounding Volume Hierarchy). This is an acceleration structure that allows collision to be greatly sped up by using very efficient culling with Axis Aligned Bounding Boxes before doing an expensive triangle collision check. From there, collision detection is implemented using a series of raycasts for any objects that interact with collision meshes. Using some matrix math, I'm able to convert the rays into local space for any given collision mesh being checked against, so that I don't need to update those collision meshes each frame to translate their vertices into world space. This also ensures I don't have to make duplicates of every collision mesh for each object that uses them, as all objects that use a given mesh can just point to the same BVH tree.</p>
 
         <p>
-            <strong>InTheBeef:</strong> 
+            <strong>InTheBeef:</strong> I'm proud of both the visuals that I worked on and engine that I didn't. 
+        </p>
+        <p>
+            From the start Wiseguy had pitched a great idea for our shading, the pros/cons of which have become more clear with time and I had tried to lean into this style as much as I could throughout development. I still feel pretty good about the character design, vaguely inspired by golems/automations from Ghibli it's just something I designed on paper and threw together as I saw fit.
+        </p>
+        <p>
+            The engine had been a large focus from the start & I would assume a pretty good learning experience for Wiseguy who made all of it. High performance with flexibility was always the goal & while it might not have been perfect by the end all of the games systems fulfilled their role pretty decently. When people comment on our game it's always about what they see but personally I feel what's going on in the background is far more impressive & underrated. 
         </p>
     </blockquote>
 
