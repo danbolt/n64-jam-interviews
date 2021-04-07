@@ -13,7 +13,7 @@
     <h2>About the developer and the game</h2>
     <div>
         <p>
-            Kumi-Daiko Beatoff 64 is Samuli, Routalanttu, Petteri, and RufioV's submission for the N64Brew Game Jam.
+            Kumi-Daiko Beatoff 64 is Samuli, Routalanttu, Petteri, and RufioV's submission for the N64Brew Game Jam. The game involves controlling a traditional Japanese mask attached to a Taiko drum. Using the analog stick, the player swings the drum around in an attempt to strike other masks. Kumi-Daiko Beatoff 64 feels incredibly at-home on the Nintendo 64 in a lot of ways. A big part of that is the endearing battle mode for up to four players.
         </p>
     </div>
 
@@ -22,7 +22,7 @@
     <p class="interview-question">What got you into Nintendo 64 homebrew?</p>
     <blockquote>
         <p>
-            <strong>Samuli: </strong>I like exploring different gaming platforms as a developer. I have done games from old arcade hardware to state of the art quantum computers and everything in between. N64 was one of the consoles I grew up playing at my friend's place so it was always on my radar, but wasn't the first older console I tacked. I had made games for Vectrex, Game Boy, Nes, Mega Drive and PS1 before this jam. I usually learn one or two new platforms every year. It was just a matter of time for me to end up making a N64 game and this game jam was a perfect excuse to do so.
+            <strong>Samuli: </strong>I like exploring different gaming platforms as a developer. I have done games from old arcade hardware to state of the art quantum computers and everything in between. N64 was one of the consoles I grew up playing at my friend's place so it was always on my radar, but wasn't the first older console I tacked. I had made games for <a href="https://zhamul.itch.io/hyper-speed">Vectrex</a>, <a href="https://zhamul.itch.io/woolballs-backyard">Game Boy</a>, <a href="https://zhamul.itch.io/sweethearts">NES</a>, <a href="https://zhamul.itch.io/double-cooked">Mega Drive</a> and <a href="https://zhamul.itch.io/siikasaurus">PS1</a> before this jam. I usually learn one or two new platforms every year. It was just a matter of time for me to end up making a N64 game and this game jam was a perfect excuse to do so.
         </p>
         <p>
             <strong>Routalanttu: </strong>The Nintendo 64, to this day, is my favorite gaming console of all time. Some of this fandom is due to conveniently timed childhood, but even when I think of it from a more analytical perspective, the N64 was the most influential platform and had the most influential games in terms of 3D game design, popularizing the analog stick and many other standards we take for granted today. Therefore, it was simply a dream of mine to have made an N64 game of my own.
@@ -74,7 +74,7 @@ The theme 'size' made me think of related concepts such as growth and mass, and 
             <strong>Samuli: </strong>I think the game feel turned out great. Once you get hang of the physics it is great fun to battle with your friends. Single player difficulty curve also ended up being more balanced than I expected. I didn't have much time to tune it, so it could have been much worse. My current record in survival mode is 150.
         </p>
         <p>
-            <strong>Routalanttu: </strong>y far the most satisfying thing about Kumi-Daiko Beatoff 64 is that the versus mode is an absolute blast to play! When the jam was over, I showed the game to a friend and ended up playing against him for 5 hours straight with no initial intention to do so. Instead of being just another jam game to be forgotten, Kumi-Daiko Beatoff 64 feels like we took a time machine to 1995 and made a Spaceworld tech demo for the analog stick, showcasing how even the simplest interactions can generate endless fun with friends. (I'm also super proud that the team approved the name I came up with :D)
+            <strong>Routalanttu: </strong>By far the most satisfying thing about Kumi-Daiko Beatoff 64 is that the versus mode is an absolute blast to play! When the jam was over, I showed the game to a friend and ended up playing against him for 5 hours straight with no initial intention to do so. Instead of being just another jam game to be forgotten, Kumi-Daiko Beatoff 64 feels like we took a time machine to 1995 and made a Spaceworld tech demo for the analog stick, showcasing how even the simplest interactions can generate endless fun with friends. (I'm also super proud that the team approved the name I came up with :D)
         </p>
         <p>
             <strong>Petteri: </strong>On the technical side I worked on the rendering and physics. I had no prior experience developing software for hardware older than myself, so I was curious if we would even be able to pull our concept off on N64. I'm happy with how things turned out, the collisions and rope physics work reliably and the floating point math capabilities of N64 turned out to be much more powerful than I was expecting, so performance was surprisingly never an issue.
@@ -89,28 +89,39 @@ The theme 'size' made me think of related concepts such as growth and mass, and 
     <p class="interview-question">The 3D models of the masks are interesting as far as Nintendo 64 games go. Even though they don't occupy a lot of space onscreen, they have a lot of nice texture detail. The dark outline gives a fun sense of shape as the mask wiggles, especially at 240p. I especially love the way Tengu's nose moves. What was it like coming up with the designs for them?</p>
     <blockquote>
         <p>
-            <strong>Samuli: </strong>
+            <strong>Samuli: </strong>I used a lot of reference images from Japanese festival and theatre masks and made up my own variations on them. I put in quite a lot of details in as we weren't sure how large everything would be displayed. In the end we had to scale things down, but you can see models in full details in the main menu at least. Even though enemy models themselves were not animated we added as much movement to the game in the code as we could, hovering behaviour, tilting into movement direction, screenshake and physics falling with unrestricted rotation on hit.
+        </p>
+        <img src="media/taiko/enemy_cropped.jpg">
+        <p>
+            We didn't have to use full outline cage in any model as they were looked only from front, but the drum has almost complete cage as it could be seen from so many angles.
+        </p>
+        <img src="media/taiko/drum_cropped.jpg">
+        <p>
+            Fun fact: everything you see in the game is a 3D model, we didn't spend any time looking into 2D rendering due time constraints. I especially enjoyed making the explosion animation frames in 3D.
         </p>
     </blockquote>
 
     <p class="interview-question">The Nintendo 64 holds a special place in your heart, and rightly so! It's an interesting console of a unique time. I'ts interesting that you tried to get into the mind of a 1995 game developer. If you were to work on a second Nintendo 64 game, would you want to see Kumi-Daiko Beatoff 64's ideas expanded in some way? Or try something different?</p>
     <blockquote>
         <p>
-            <strong>Routalanttu: </strong>
+            <strong>Routalanttu: </strong>In the early design talks, we discussed how the mechanics could be expanded upon, like having levels with platforms or making the mask and drum switch places by pressing a button etc., but even if features like that had been implemented, they might have made Kumi-Daiko Beatoff's gameplay needlessly complex and less approachable. If I were to work on a second N64 game (of similar scope), I would probably try something a little different, but still make a couch multiplayer game that works around super simple control and easily understandable physical interactions. Maybe a ninja rope battle game where yo-yo-looking characters with hookshots would bounce around in tight spaces trying to break each other with high-speed collisions, reeling their ropes in during swings to gain momentum, or a ball game where circular movements with the analog stick would translate to paddle swings on characters that move around inside a pinball/foosball-inspired table world.
+        </p>
+        <p>
+            No matter what the core mechanical idea ended up being, Rare-like charm in the aesthetics would be a fun design challenge.
         </p>
     </blockquote>
 
     <p class="interview-question">Throwing the drum around has a nice difficlty to it. It's satisfying when you get a hit in, but you have to be careful. What was it like developing the physics and controls for the game? Did you have to iterate to find a good balance?</p>
     <blockquote>
         <p>
-            <strong>Petteri: </strong>
+            <strong>Petteri: </strong>Making hits satisfying, especially in the multiplayer gamemodes, was certainly a priority for me. I wanted to make the drum hits feel powerful, like it smashes into the other players with an enormous amount of force. But I could not simply make the drums super-heavy compared to the players, as that would soon cause your own drum hinder your movement. So for the sake of fun and gameplay, I decided to cheat on the physics a bit and have the drum use greater mass in drum-player collisions than in the rope physics calculations. Breaking the laws of physics does come with a cost, however, since this caused each hit to add energy to the system. More energy means more collisions, and without careful balancing, the physics would explode with everything bouncing around at ever-increasing speeds. The current balance between fun, gameplay, and numerical stability was eventually found through iteration.
         </p>
     </blockquote>
 
     <p class="interview-question">Probably every Nintendo 64 homebrew developer will agree that audio has a lot of technical constraints. If you were able to "go big" for this jam, what sort of music would you make? What would you do if unconstrained?</p>
     <blockquote>
         <p>
-            <strong>RufioV: </strong>
+            <strong>RufioV: </strong>I would have loved to make a track that was longer, full of more happening melodies & earworms. My jam tracks are known for their bop! Kumi-daiko Beatoff 64 would've been perfect for a catchy song with the vibe of being at an East Asian festival. Definitely wouldn't have made the song mono if given the choice, which is a restriction I normally only experience when making music for mobile platforms.
         </p>
     </blockquote>
 
@@ -118,26 +129,29 @@ The theme 'size' made me think of related concepts such as growth and mass, and 
     <p class="interview-question">If someone wanted to get into homebrew today, would you have any advice or suggestions for them?</p>
     <blockquote>
         <p>
-            <strong>Samuli: </strong>
+            <strong>Samuli: </strong>When talking about homebrew for older consoles, I always recommend GB Studio which is one of the easiest tools to begin making games in general. You don't need any technical background for using it and you will have a fully working Game Boy game done in a day.
         </p>
         <p>
-            <strong>Routalanttu: </strong>
+            As for N64 spesifically I would highly recommend getting some experience in coding elsewhere before tackling it. N64 can be quite overwhelming for a beginner. Once you feel comfortable giving it a go make sure to set up a good coding and testing enviroment. Just spend few days setting up a smooth workflow. Write build and utility scripts, integrate tools that other people have provided for N64 community and configure your emulators and testing hardware.
         </p>
         <p>
-            <strong>Petteri: </strong>
+            <strong>Routalanttu: </strong>Do it! The feeling of having something fun that you took part in creating running on that favorite piece of gaming hardware makes all the time and effort worth it. Even if it was a an inopportune time for me to take part in this, I'm glad I did not miss this opportunity. Optimally, do it with friends and make use of the community's resources!
         </p>
         <p>
-            <strong>RufioV: </strong>
+            <strong>Petteri: </strong>I would suggest making use of the many open-source games made during the latest N64Brew game jam as learning resources. When we started with our jam project, there were many minimal examples available on the internet, but it was difficult to find any complete projects that would have covered all the tools and libraries needed to get a full game implemented. Much of the information found on the internet was also out-of-date (such compiling in windows xp instead of using linux+wine). So for someone with a programming background wanting to get started with N64 homebrew today, I would recommend grabbing the source code for Kumi-Daiko Beatoff 64 (or any other of the great projects made during the latest jam) and using that as a starting point for your own project.
+        </p>
+        <p>
+            <strong>RufioV: </strong>I loved doing this and absolutely recommend to anyone else to do it! If you're an audio person, definitely look up some technical restrictions so you understand what is absolutely out of scope. Samuli told me that in another jam on a different game, they had a situation something like having to remove a level to make room for music--whatever it was... you don't want that!! Do just the tiniest bit of homework to realize what you're up against. And then give it your all ;)
         </p>
     </blockquote>
 
 
 
     <h2>Screenshots</h2>
-    <img width="320px" src="media/lunar/my_photo-13.jpg">
-    <img width="320px" src="media/lunar/my_photo-18.jpg">
-    <img width="320px" src="media/lunar/my_photo-23.jpg">
-    <img width="320px" src="media/lunar/my_photo-15.jpg">
+    <img width="320px" src="media/taiko/vlcsnap-2021-04-07-11h18m31s080.png">
+    <img width="320px" src="media/taiko/vlcsnap-2021-04-07-11h19m15s450.png">
+    <img width="320px" src="media/taiko/vlcsnap-2021-04-07-11h19m24s293.png">
+    <img width="320px" src="media/taiko/vlcsnap-2021-04-07-11h19m35s328.png">
     <h2>Some Nice Links</h2>
     <ul>
         <li><a href="https://zhamul.itch.io/kumi-daiko-beatoff-64">Kumi-Daiko Beatoff 64 on itch.io</a></li>
