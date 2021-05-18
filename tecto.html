@@ -63,7 +63,7 @@
         </p>
     </blockquote>
 
-    <p class="interview-question">How did you feel about writing a game in ECS on the Nintendo 64? That sort of thing wasn't really in vogue at the time of the system's popularity?</p>
+    <p class="interview-question">How did you feel about writing a game in ECS on the Nintendo 64? That sort of thing wasn't really in vogue at the time of the system's popularity.</p>
     <blockquote>
         <p><strong>Wiseguy:</strong> As far as I know, the concept barely existed if at all at that point in game dev, so it was very interesting taking modern design principles and applying them to a console that is older than the principles themselves.</p>
         <p>Writing an ECS on N64 was definitely difficult, especially since I constrained myself to using C. I considered using C++ for it, but I had heard that there were some issues that I didn't know the specifics of at the time, and I'm more experienced with just straight up C, so I ended up avoiding C++ for this case.</p>
@@ -77,17 +77,37 @@
         <p><strong>Wiseguy:</strong> I absolutely plan on reusing the ECS on another project when the time comes. There's a bug in relation to deleting objects (which I worked around by just resetting the entire system when leaving the level and going to credits), but other than that it works incredibly well. There's room to improve it in both usability and performance, for example tweaking the size of memory blocks to minimize wasted RAM while still maintaining good allocation performance, so it'll definitely get some upgrades next time I use it.</p>
     </blockquote>
 
-    <p class="interview-question">next question for InTheBeef</p>
+    <p class="interview-question">What was it like iterating on your work in Blender & seeing it ingame? Were there ever times where you'd tweak or update the environment after trying it out?</p>
     <blockquote>
         <p>
-            <strong>InTheBeef:</strong> 
+            <strong>InTheBeef:</strong> The environment definitely saw many tweaks, repositioning l& to work better with the gameplay we rapidly cooked up & some thrown out parts of the model for concepts we didn't have the time to begin.
+        </p>
+    </blockquote>
+
+    <p class="interview-question">The little world in Tecto feels lush & interesting, & you made a lot of smart technical decisions for visual performance. The texture blender of the ground comes to mind. Would you have any advice on 3D modelling on the Nintendo 64?</p>
+    <blockquote>
+        <p>
+            <strong>InTheBeef:</strong> Worry about tri-count later, geometry optimization is quick & easy, actually making good looking geometry is the tough part. Be doubly certain of the available texture formats & effects you can pull off in the color combiner.
+        </p>
+        <p>
+            As long as you fully understand your software (& if it is capable) & what the N64 is capable of you shouldn't have much issue bringing your dreams closer to reality. I think there's probably a lot more room for graphical innovation than people think.
+        </p>
+    </blockquote>
+
+    <p class="interview-question">If you were to author more content or new assets for the game, is there anything you'd like to create?</p>
+    <blockquote>
+        <p>
+            <strong>InTheBeef:</strong> Originally I had thought up some Fire + Ice Levels & Final Dungeon concepts as well & a lot more size based puzzles. Adding those and polishing the Swamp is probably the main goal for me. A lot of texturing was rushed and it just doesn't sit right with me.
         </p>
     </blockquote>
 
     <p class="interview-question">If someone wanted to get into homebrew today, would you have any advice or suggestions for them?</p>
     <blockquote>
         <p>
-            <strong>InTheBeef:</strong> 
+            <strong>InTheBeef:</strong> Having a friend capable of coding is THE only reason I (an artist/3D modeler) could participate & have learned so much (& continue to do so thanks WG). Unless you're some kind of eldritch abomination capable of both graphics & coding, I think you're going to want a friend capable of covering for your weakness that wants to work with you.
+        </p>
+        <p>
+            To those wanting to do N64 graphics specifically: again, learn the texture formats and learn the color combiner. It's a pretty simple concept that you can play around with in Blender & the backbone of almost any graphical effect you're after.
         </p>
         <p>
             <strong>Wiseguy:</strong> Since so much of N64 development is knowing how the graphics pipeline works, it might be worth looking into setting up some sort of sandbox environment to play around with things like the color combiner, texture loads, etc. to get a feel for them. Knowing how to render graphics is pretty critical (can't really have much of a game without any rendering of some kind), so I think it should be a pretty high priority detail to learn. Luckily, there are a lot of resources on how N64 graphics works not just in the homebrew community but in romhacking communities as well, since they all share the same graphics hardware at the end of the day. My only word of caution if learning via romhacking resources is to make sure you understand which parts are game-specific, such as rigging for skeletal animation, and which parts are not, such as displaylists and vertex arrays. 
